@@ -17,3 +17,29 @@ export function hideLoading() {
     const loader = document.getElementById('loader');
     loader.className = 'not-show';
 }
+
+export function displayArticleToHTML( article ) {
+    const cardDiv = document.createElement('div');
+    cardDiv.className = 'article-class';
+    
+    const titleElement = document.createElement('h3');
+    titleElement.textContent = article.title;
+    cardDiv.appendChild(titleElement);
+    
+    const authorElement = document.createElement('p');
+    authorElement.className = 'author';
+    authorElement.textContent = article.author ? `By: ${article.author}` : 'By: Unknown';
+    cardDiv.appendChild(authorElement);
+    
+    const descriptionElement = document.createElement('p');
+    descriptionElement.className = "description";
+    descriptionElement.textContent = article.description;
+    cardDiv.appendChild(descriptionElement);
+    
+    const publishedAtElement = document.createElement('p');
+    publishedAtElement.className = 'publishedAt';
+    publishedAtElement.textContent = `Published on: ${formatDate(article.publishedAt)}`;
+    cardDiv.appendChild(publishedAtElement);
+
+    return cardDiv;
+}

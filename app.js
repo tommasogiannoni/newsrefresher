@@ -1,78 +1,50 @@
-import { formatDate, showLoading, hideLoading } from './utils/utility.js';
+import { formatDate, showLoading, hideLoading, displayArticleToHTML } from './utils/utility.js';
+import { fetchNews } from './utils/service.js';
 
-const apiUrl = 'https://saurav.tech/NewsAPI/everything/cnn.json';
+const MAX_NUM_ARTICLES = 10;
 let showArticles = [];
 let currentIndex = 0;
 
-function fetchNews() {
-    return fetch(apiUrl)
-                        .then(data => {
-                            if(!data.ok)
-                                throw Error("Api service failed!");
-
-                            return data.json();
-                        })
-                        .catch(error => {
-                            console.error(error);
-                        });
-}
-
 /**
- * On load page get all articles
+ * On page load get all articles
  */
 document.addEventListener('DOMContentLoaded', async function() {
     showLoading();
+    //
     const rawResult = await fetchNews();
     showArticles = rawResult.articles;
-    displayResults();
+    displayResults(); // dsiplay  first 10 articles
+    //
     hideLoading();
 })
 
+/**
+ * Function that update the article views
+ */
 function displayResults() {
     const container = document.getElementById('results-container');
     container.innerHTML = '';
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < MAX_NUM_ARTICLES; i++) {
         if (currentIndex >= showArticles.length) {
-            currentIndex = 0; // reset at the end;
+            currentIndex = 0; 
         }
 
         const article = showArticles[currentIndex];
-        currentIndex++;
+        currentIndex++; // keep track about latest article showed
 
-        const cardDiv = document.createElement('div');
-        cardDiv.className = 'article-class';
-        
-        const titleElement = document.createElement('h3');
-        titleElement.textContent = article.title;
-        cardDiv.appendChild(titleElement);
-        
-        const authorElement = document.createElement('p');
-        authorElement.className = 'author';
-        authorElement.textContent = article.author ? `By: ${article.author}` : 'By: Unknown';
-        cardDiv.appendChild(authorElement);
-        
-        const descriptionElement = document.createElement('p');
-        descriptionElement.className = "description";
-        descriptionElement.textContent = article.description;
-        cardDiv.appendChild(descriptionElement);
-        
-        const publishedAtElement = document.createElement('p');
-        publishedAtElement.className = 'publishedAt';
-        publishedAtElement.textContent = `Published on: ${formatDate(article.publishedAt)}`;
-        cardDiv.appendChild(publishedAtElement);
-        
-        container.appendChild(cardDiv);
+        // create article div;
+        const divToAdd = displayArticleToHTML(article);
+        container.appendChild(divToAdd);
     }
 }
 
 /**
- * Delete the 10 showed news to refil with other 10
+ * On refresh button click update the view
  */
 function refresh() {
     displayResults();
 }
-window.refresh = refresh;
 
 
 function scrollFunction() {
@@ -83,13 +55,17 @@ function scrollFunction() {
     }
 }
   
-const listener = () => {
+function goTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
- }
+}
+
 
 let mybutton = document.getElementById("top");
-window.onscroll = function() {scrollFunction()};
-mybutton.addEventListener("click", listener);
+//
+mybutton.addEventListener("click", goTop);
+//
+window.refresh = refresh;
+window.onscroll = scrollFunction;
 
 
