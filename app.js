@@ -1,4 +1,4 @@
-import { formatDate, showLoading, hideLoading, displayArticleToHTML } from './utils/utility.js';
+import { showLoading, hideLoading, displayArticleToHTML } from './utils/utility.js';
 import { fetchNews } from './utils/service.js';
 
 const MAX_NUM_ARTICLES = 10;
