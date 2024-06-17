@@ -3,7 +3,7 @@
 <img src="https://github.com/tommasogiannoni/newsrefresher/blob/main/assets/preview.png"></h2>
 <br/>
 
-![JavaScript](https://img.shields.io/badge/Language-typescript-blue)
+![JavaScript](https://img.shields.io/badge/Language-javascript-blue)
 
 A simple and efficient web application built with Vanilla JavaScript, HTML, and CSS, designed to display the top 10 news stories at a time. 
 Users can refresh the news to load a new set of 10 news articles, ensuring they always have access to the latest updates.
