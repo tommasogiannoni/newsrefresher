@@ -60,11 +60,15 @@ function goTop() {
     document.documentElement.scrollTop = 0;
 }
 
-
+/**
+ * Dom elements event handling
+ */
 let mybutton = document.getElementById("top");
-//
 mybutton.addEventListener("click", goTop);
-//
+
+/**
+ * Window function handling
+ */
 window.refresh = refresh;
 window.onscroll = scrollFunction;
 
