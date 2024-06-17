@@ -1,0 +1,31 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NewsRefresher</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div>
+      <header>
+        <div class="title-div">
+          <p class="title">
+            📰 News Refresher 📰
+          </p>
+          <p>
+            <span class="subtitle">
+              Your daily dose of news
+            </span>
+          </p>
+        </div>
+      </header>
+      <div class="main">
+        <div id="loader">Loading ...</div>
+        <button class="refresh-btn" id="refresh" onclick="refresh()">🔄</button>
+        <div class="results" id="results-container"></div>
+      </div>
+      <button id="top">⬆️</button>
+    </div>
+    <script type="module" src="app.js" defer></script>
+  </body>
+</html>
