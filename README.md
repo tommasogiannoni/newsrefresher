@@ -1,6 +1,6 @@
 # 📰 News Refresher WebApp
 <br/>
-<img src="https://github.com/tommasogiannoni/newsrefrehser/blob/master/assets/preview.png"></h2>
+<img src="https://github.com/tommasogiannoni/newsrefrehser/blob/main/assets/preview.png"></h2>
 <br/>
 
 ![JavaScript](https://img.shields.io/badge/Language-typescript-blue)
