@@ -18,7 +18,7 @@ export function hideLoading() {
     loader.className = 'not-show';
 }
 
-export function displayArticleToHTML( article ) {
+export function createArticleToDIV( article ) {
     const cardDiv = document.createElement('div');
     cardDiv.className = 'article-class';
     

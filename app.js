@@ -1,4 +1,4 @@
-import { showLoading, hideLoading, displayArticleToHTML } from './utils/utility.js';
+import { showLoading, hideLoading, createArticleToDIV } from './utils/utility.js';
 import { fetchNews } from './utils/service.js';
 
 const MAX_NUM_ARTICLES = 10;
@@ -34,7 +34,7 @@ function displayResults() {
         currentIndex++; // keep track about latest article showed
 
         // create article div;
-        const divToAdd = displayArticleToHTML(article);
+        const divToAdd = createArticleToDIV(article);
         container.appendChild(divToAdd);
     }
 }
