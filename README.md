@@ -1,4 +1,4 @@
-# 📰 News Refresher WebApp
+# 📰 News Refresher
 <br/>
 <img src="https://github.com/tommasogiannoni/newsrefresher/blob/main/assets/preview.png"></h2>
 <br/>
